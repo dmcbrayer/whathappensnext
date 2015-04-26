@@ -7,7 +7,7 @@ describe User do
   it { should respond_to(:email) }
 
   it "#email returns a string" do
-    expect(@user.email).to match 'user@example.com'
+    expect(@user.email).to be_a(String)
   end
 
 end
