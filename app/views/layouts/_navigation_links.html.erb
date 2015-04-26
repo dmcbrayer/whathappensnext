@@ -1,8 +1,21 @@
 <%# add navigation links to this file %>
+
 <li><%= link_to 'About', about_path %></li>
+
 <% if user_signed_in? %>
-  <li><%= link_to 'Edit account', edit_user_registration_path %></li>
-  <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      <%= current_user.name %> <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><%= link_to "New Story", new_story_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Your Stories", stories_path %></li>
+      <li><%= link_to "Your Profile", '#' %></li>
+      <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+      <li class="divider"></li>
+      <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+    </ul>
+  </li>
 <% else %>
   <li><%= link_to 'Sign in', new_user_session_path %></li>
   <li><%= link_to 'Sign up', new_user_registration_path %></li>
