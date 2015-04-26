@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Story, type: :model do
-  let(:user) {create(:user)}
-  let(:story) {user.stories.create(FactoryGirl.attributes_for(:story))}
+  let(:story) {create(:story)}
 
   describe "Model attributes set up" do
     subject {story}
@@ -26,7 +25,7 @@ RSpec.describe Story, type: :model do
     end
 
     it "is associated with a user" do
-      expect(story.user_id).to eq(user.id)
+      expect(story.user_id).not_to be_nil
     end
 
     context "format validations" do

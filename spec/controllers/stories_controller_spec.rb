@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 describe StoriesController, type: :controller do
+
+  login_user
   
   describe 'GET #index' do
     
