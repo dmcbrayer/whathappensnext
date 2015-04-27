@@ -7,6 +7,7 @@ class StoriesController < ApplicationController
   end
 
   def show
+    @posts = @story.posts.all
   end
 
   def new
