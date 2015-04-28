@@ -20,6 +20,14 @@ class PostsController < ApplicationController
   end
 
   def update
+
+    if @post.update(post_params)
+      flash[:notice] = "Post successfully updated"
+      redirect_to story_path(@post.story)
+    else
+      flash.now[:danger] = "There was some kind of error"
+      render :edit
+    end
   end
 
   def destroy

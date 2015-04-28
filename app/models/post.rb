@@ -5,6 +5,6 @@ class Post < ActiveRecord::Base
 
 
   def plain_time
-    self.updated_at.strftime("%b %d, %Y %l:%M %p")
+    self.updated_at.strftime("%b %d, %Y")
   end
 end

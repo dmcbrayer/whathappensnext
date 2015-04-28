@@ -15,7 +15,16 @@ img {
   }
 // override for the 'Home' navigation link
 .navbar-brand {
-  font-size: inherit;
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  padding-top: 12px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    text-decoration: none;
+    }
   }
 
 // THESE ARE EXAMPLES YOU CAN MODIFY
@@ -93,4 +102,8 @@ section {
   width: 100%;
   margin-top: 45px;
   @include box_sizing;
+}
+
+.post-body {
+
 }
