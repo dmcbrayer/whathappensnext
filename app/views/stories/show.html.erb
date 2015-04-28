@@ -6,12 +6,32 @@
 
 <% @posts.each do |post| %>
   <div class="row">
+    <div class="col-md-1">
+    </div>
     <div class="col-md-9">
       <p><%= post.body %></p>
       <br />
     </div>
-    <div class="col-md-3">
-      <p><%= post.updated_at %></p>
+    <div class="col-md-2">
+      <p><%= post.plain_time %></p>
+      <p><%= link_to 'Edit', edit_story_post_path(@story, post) %> | <%= link_to 'Delete', story_post_path(@story, post), method: :delete %></p>
     </div>
   </div>
 <% end %>
+
+<div class="row">
+  <div class="col-md-1">
+  </div>
+  <%= form_for @post, url: story_posts_path(@story) do |f| %>
+    <div class="col-md-9">
+      <div class="form-group">
+        <%= f.text_area :body, class: "form-control", :rows => 25 %>
+      </div>
+    </div>
+
+    <div class="col-md-2">
+      <%= f.submit "Publish", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+

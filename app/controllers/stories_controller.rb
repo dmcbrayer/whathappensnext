@@ -8,6 +8,7 @@ class StoriesController < ApplicationController
 
   def show
     @posts = @story.posts.all
+    @post = @story.posts.new
   end
 
   def new
@@ -21,23 +22,33 @@ class StoriesController < ApplicationController
     @story = current_user.stories.create(story_params)
 
     if @story.save
+      flash[:notice] = "Story was successfully created"
       redirect_to story_path(@story)
     else
+      flash.now[:error] = "There was an error creating the story"
       render :new
     end
   end
 
   def update
     if @story.update(story_params)
+      flash[:notice] = "Story was successfully updated"
       redirect_to story_path(@story)
     else
+      flash.now[:error] = "There was an error creating the story"
       render :edit
     end
   end
 
   def destroy
-    @story.destroy
-    redirect_to root_url
+
+    if @story.destroy
+      flash[:notice] = "Story was successfully destroyed.  Utterly."
+      redirect_to root_url
+    else
+      flash.now[:error] = "Story could not be destroyed"
+      redirect_to story_path(@story)
+    end
   end
 
   private

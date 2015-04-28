@@ -1,17 +1,17 @@
 class PostsController < ApplicationController
 
-  before_action :set_story
+  before_action :set_story, except: [:destroy]
   before_action :set_post, only: [:edit, :update, :destroy]
   
   def create
     @story.posts.create(post_params)
 
     if @story.save
+      flash[:notice] = "Post successful!"
       redirect_to story_path(@story)
-      flash.now[:success] = "Post successful!"
     else
-      redirect_to story_path(@story)
       flash.now[:danger] = "Error creating post"
+      redirect_to story_path(@story)
     end
 
   end
@@ -23,6 +23,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
+
+    if @post.destroy
+      flash[:notice] = "Post successfully destroyed"
+      redirect_to story_path(@post.story)
+    else
+      flash.now[:danger] = "There was an error"
+    end
   end
 
   private
