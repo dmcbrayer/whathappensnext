@@ -76,6 +76,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     columnize (0.9.0)
+    crass (1.0.2)
     database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.4.1)
@@ -99,6 +100,7 @@ GEM
     foreman (0.78.0)
       thor (~> 0.19.1)
     formatador (0.2.5)
+    github-markdown (0.6.8)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     guard (2.12.5)
@@ -125,6 +127,9 @@ GEM
     haml (4.0.6)
       tilt
     hitimes (1.2.2)
+    html-pipeline (1.11.0)
+      activesupport (>= 2)
+      nokogiri (~> 1.4)
     i18n (0.7.0)
     interception (0.5)
     jbuilder (2.2.13)
@@ -158,6 +163,8 @@ GEM
     nenv (0.2.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    nokogumbo (1.4.1)
+      nokogiri
     notiffany (0.0.6)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -257,6 +264,10 @@ GEM
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.5)
     rubyzip (1.1.7)
+    sanitize (4.0.0)
+      crass (~> 1.0.2)
+      nokogiri (>= 1.4.4)
+      nokogumbo (= 1.4.1)
     sass (3.4.13)
     sass-rails (5.0.3)
       railties (>= 4.0.0, < 5.0)
@@ -332,9 +343,11 @@ DEPENDENCIES
   factory_girl_rails
   faker
   foreman
+  github-markdown
   guard-bundler
   guard-rails
   guard-rspec
+  html-pipeline
   jbuilder (~> 2.0)
   jquery-rails
   launchy
@@ -350,6 +363,7 @@ DEPENDENCIES
   rb-inotify
   rspec-rails
   rubocop
+  sanitize
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
